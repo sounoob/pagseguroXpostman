@@ -1,0 +1,129 @@
+{
+  "id": "0a77f5e2-9c75-80aa-9958-a1ff2442fca0",
+  "name": "Postman Globals",
+  "values": [
+    {
+      "enabled": true,
+      "key": "__________by_env__________",
+      "value": "__________by_env__________",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "url_main_prod",
+      "value": "https://pagseguro.uol.com.br/",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "url_ws_prod",
+      "value": "https://ws.pagseguro.uol.com.br/",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "url_main_sand",
+      "value": "https://sandbox.pagseguro.uol.com.br/",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "url_ws_sand",
+      "value": "https://ws.sandbox.pagseguro.uol.com.br/",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "sender_hash_sand",
+      "value": "36d278a04af7a9b70570a7ed2c8b664fc8a510a9def2367fd4ebb462885973a9",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "sender_hash_prod",
+      "value": "26fbd9c180f13f2aedb6039cbd92316e86bf50014513376ff763b6fb6b1fe85c",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "__________user_data__________",
+      "value": "__________user_data__________",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "sender_name",
+      "value": "Comprador cheio do dinheiro",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "sender_email",
+      "value": "buy@buy.com.br",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "today",
+      "value": "14/8/2017",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "initialDate",
+      "value": "2016-10-11T00:35:08.677Z",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "finalDate",
+      "value": "2017-10-10T00:35:08.677Z",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "cardNumber",
+      "value": "4111111111111111",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "cardBrand",
+      "value": "visa",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "amount",
+      "value": "100.00",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "cardCvv",
+      "value": "123",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "cardExpirationMonth",
+      "value": "03",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "cardExpirationYear",
+      "value": "2050",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "________dinamic_data__________",
+      "value": "________dinamic_data__________",
+      "type": "text"
+    }
+  ],
+  "_postman_variable_scope": "globals",
+  "_postman_exported_at": "2017-10-11T13:54:37.660Z",
+  "_postman_exported_using": "Postman/5.3.0"
+}
