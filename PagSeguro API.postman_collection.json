@@ -66,7 +66,7 @@
 					},
 					"response": [
 						{
-							"id": "4c57accd-ac3c-49c7-bada-799a6c8d7d2c",
+							"id": "f3b99968-f19f-453c-bba3-6f570b0e480f",
 							"name": "200",
 							"originalRequest": {
 								"url": {
@@ -163,7 +163,7 @@
 							"body": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"yes\"?><transaction><date>2017-06-21T17:26:49.000-03:00</date><code>AC9AE719-EC98-4BDA-BE20-753FC06544E5</code><reference>201706</reference><type>1</type><status>7</status><cancellationSource>EXTERNAL</cancellationSource><lastEventDate>2017-06-21T17:26:55.000-03:00</lastEventDate><paymentMethod><type>1</type><code>101</code></paymentMethod><grossAmount>2.00</grossAmount><discountAmount>0.00</discountAmount><creditorFees><installmentFeeAmount>0.00</installmentFeeAmount><intermediationRateAmount>0.40</intermediationRateAmount><intermediationFeeAmount>0.10</intermediationFeeAmount></creditorFees><netAmount>1.50</netAmount><extraAmount>0.00</extraAmount><installmentCount>1</installmentCount><itemCount>1</itemCount><items><item><id>0001</id><description>Notebook Prata</description><quantity>1</quantity><amount>2.00</amount></item></items><sender><name>Jose Comprador</name><email>sena@senartes.com.br</email><phone><areaCode>11</areaCode><number>56713293</number></phone></sender><primaryReceiver><publicKey>PUB3709AE5B09E14FC99C5CF2E31639D681</publicKey></primaryReceiver></transaction>"
 						},
 						{
-							"id": "ce81e6de-0821-4bdc-ab84-d4097b129dc3",
+							"id": "b6958c76-83c3-4cfe-b963-62a36c13f8f8",
 							"name": "Unauthorized",
 							"originalRequest": {
 								"url": {
@@ -254,7 +254,7 @@
 							"body": "Unauthorized"
 						},
 						{
-							"id": "a169d6a8-e988-41ea-b33a-96ac4d0c795c",
+							"id": "1dac79af-e4b5-40a0-8bd2-c56254f22fb9",
 							"name": "Error",
 							"originalRequest": {
 								"url": {
@@ -357,7 +357,446 @@
 							"body": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"yes\"?>\n<errors>\n    <error>\n        <code>13003</code>\n        <message>invalid transactionCode value: 1AC9AE719-EC98-4BDA-BE20-753FC06544E5</message>\n    </error>\n</errors>"
 						},
 						{
-							"id": "24ab761c-72f8-4a7c-8bb1-d4aedd15ecac",
+							"id": "94257f48-2df5-47df-902b-38a2b9be6749",
+							"name": "Not Found",
+							"originalRequest": {
+								"url": {
+									"raw": "{{url_ws}}v3/transactions/{{transaction_code}}?email={{email}}&token={{token}}",
+									"host": [
+										"{{url_ws}}v3"
+									],
+									"path": [
+										"transactions",
+										"{{transaction_code}}"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "{{email}}",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plainText",
+							"_postman_previewtype": "text",
+							"header": [
+								{
+									"name": "Connection",
+									"key": "Connection",
+									"value": "close",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"name": "Content-Encoding",
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"name": "Content-Length",
+									"key": "Content-Length",
+									"value": "29",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"name": "Content-Type",
+									"key": "Content-Type",
+									"value": "text/plain;charset=ISO-8859-1",
+									"description": "The mime type of this content"
+								},
+								{
+									"name": "Date",
+									"key": "Date",
+									"value": "Tue, 11 Jul 2017 14:55:28 GMT",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"name": "Server",
+									"key": "Server",
+									"value": "Apache-Coyote/1.1",
+									"description": "A name for the server"
+								},
+								{
+									"name": "Strict-Transport-Security",
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"name": "Vary",
+									"key": "Vary",
+									"value": "Accept-Encoding,User-Agent",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								}
+							],
+							"cookie": [],
+							"responseTime": 158,
+							"body": "Not Found"
+						}
+					]
+				},
+				{
+					"name": "Consulta de notificação de transação",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var env = postman.getEnvironmentVariable(\"env\");",
+									"",
+									"if(env == 'sandbox') {",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_sand\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_sand\"));",
+									"    ",
+									"}else{",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_prod\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_prod\"));",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url_ws}}v2/transactions/notifications/7A5B4273D1AFD1AF55F334965FBD7090BE4D?email={{email}}&token={{token}}",
+							"host": [
+								"{{url_ws}}v2"
+							],
+							"path": [
+								"transactions",
+								"notifications",
+								"7A5B4273D1AFD1AF55F334965FBD7090BE4D"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": [
+						{
+							"id": "38e6b884-8e8a-45cf-ac42-3f87fe62b2ba",
+							"name": "200",
+							"originalRequest": {
+								"url": {
+									"raw": "{{url_ws}}v3/transactions/{{transaction_code}}?email={{email}}&token={{token}}",
+									"host": [
+										"{{url_ws}}v3"
+									],
+									"path": [
+										"transactions",
+										"{{transaction_code}}"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "{{email}}",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "xml",
+							"_postman_previewtype": "text",
+							"header": [
+								{
+									"name": "Cache-Control",
+									"key": "Cache-Control",
+									"value": "public, no-transform, no-cache, max-age=180",
+									"description": ""
+								},
+								{
+									"name": "Connection",
+									"key": "Connection",
+									"value": "close",
+									"description": ""
+								},
+								{
+									"name": "Content-Encoding",
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"description": ""
+								},
+								{
+									"name": "Content-Length",
+									"key": "Content-Length",
+									"value": "562",
+									"description": ""
+								},
+								{
+									"name": "Content-Type",
+									"key": "Content-Type",
+									"value": "application/xml;charset=ISO-8859-1",
+									"description": ""
+								},
+								{
+									"name": "Date",
+									"key": "Date",
+									"value": "Tue, 11 Jul 2017 14:52:18 GMT",
+									"description": ""
+								},
+								{
+									"name": "Expires",
+									"key": "Expires",
+									"value": "Tue, 11 Jul 2017 14:55:18 GMT",
+									"description": ""
+								},
+								{
+									"name": "Strict-Transport-Security",
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000",
+									"description": ""
+								},
+								{
+									"name": "Vary",
+									"key": "Vary",
+									"value": "Accept-Encoding,User-Agent",
+									"description": ""
+								}
+							],
+							"cookie": [],
+							"responseTime": 175,
+							"body": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"yes\"?><transaction><date>2017-06-21T17:26:49.000-03:00</date><code>AC9AE719-EC98-4BDA-BE20-753FC06544E5</code><reference>201706</reference><type>1</type><status>7</status><cancellationSource>EXTERNAL</cancellationSource><lastEventDate>2017-06-21T17:26:55.000-03:00</lastEventDate><paymentMethod><type>1</type><code>101</code></paymentMethod><grossAmount>2.00</grossAmount><discountAmount>0.00</discountAmount><creditorFees><installmentFeeAmount>0.00</installmentFeeAmount><intermediationRateAmount>0.40</intermediationRateAmount><intermediationFeeAmount>0.10</intermediationFeeAmount></creditorFees><netAmount>1.50</netAmount><extraAmount>0.00</extraAmount><installmentCount>1</installmentCount><itemCount>1</itemCount><items><item><id>0001</id><description>Notebook Prata</description><quantity>1</quantity><amount>2.00</amount></item></items><sender><name>Jose Comprador</name><email>sena@senartes.com.br</email><phone><areaCode>11</areaCode><number>56713293</number></phone></sender><primaryReceiver><publicKey>PUB3709AE5B09E14FC99C5CF2E31639D681</publicKey></primaryReceiver></transaction>"
+						},
+						{
+							"id": "3ce45a36-3cb3-49ea-a4cf-e2d6ff4ff832",
+							"name": "Unauthorized",
+							"originalRequest": {
+								"url": {
+									"raw": "{{url_ws}}v3/transactions/{{transaction_code}}?email={{email}}&token={{token}}",
+									"host": [
+										"{{url_ws}}v3"
+									],
+									"path": [
+										"transactions",
+										"{{transaction_code}}"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "{{email}}",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "plainText",
+							"_postman_previewtype": "text",
+							"header": [
+								{
+									"name": "Connection",
+									"key": "Connection",
+									"value": "close",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"name": "Content-Encoding",
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"name": "Content-Length",
+									"key": "Content-Length",
+									"value": "32",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"name": "Content-Type",
+									"key": "Content-Type",
+									"value": "text/plain;charset=ISO-8859-1",
+									"description": "The mime type of this content"
+								},
+								{
+									"name": "Date",
+									"key": "Date",
+									"value": "Tue, 11 Jul 2017 14:53:55 GMT",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"name": "Server",
+									"key": "Server",
+									"value": "Apache-Coyote/1.1",
+									"description": "A name for the server"
+								},
+								{
+									"name": "Strict-Transport-Security",
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"name": "Vary",
+									"key": "Vary",
+									"value": "Accept-Encoding,User-Agent",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								}
+							],
+							"cookie": [],
+							"responseTime": 190,
+							"body": "Unauthorized"
+						},
+						{
+							"id": "df90e633-233d-4d5e-aaa9-8accc6bbc97f",
+							"name": "Error",
+							"originalRequest": {
+								"url": {
+									"raw": "{{url_ws}}v3/transactions/{{transaction_code}}?email={{email}}&token={{token}}",
+									"host": [
+										"{{url_ws}}v3"
+									],
+									"path": [
+										"transactions",
+										"{{transaction_code}}"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "{{email}}",
+											"equals": true,
+											"description": ""
+										},
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "xml",
+							"_postman_previewtype": "text",
+							"header": [
+								{
+									"name": "Cache-Control",
+									"key": "Cache-Control",
+									"value": "max-age=180",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"name": "Connection",
+									"key": "Connection",
+									"value": "close",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"name": "Content-Encoding",
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"name": "Content-Length",
+									"key": "Content-Length",
+									"value": "174",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"name": "Content-Type",
+									"key": "Content-Type",
+									"value": "application/xml;charset=ISO-8859-1",
+									"description": "The mime type of this content"
+								},
+								{
+									"name": "Date",
+									"key": "Date",
+									"value": "Tue, 11 Jul 2017 14:54:25 GMT",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"name": "Expires",
+									"key": "Expires",
+									"value": "Tue, 11 Jul 2017 14:57:25 GMT",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"name": "Server",
+									"key": "Server",
+									"value": "Apache-Coyote/1.1",
+									"description": "A name for the server"
+								},
+								{
+									"name": "Strict-Transport-Security",
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"name": "Vary",
+									"key": "Vary",
+									"value": "Accept-Encoding,User-Agent",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								}
+							],
+							"cookie": [],
+							"responseTime": 145,
+							"body": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"yes\"?>\n<errors>\n    <error>\n        <code>13003</code>\n        <message>invalid transactionCode value: 1AC9AE719-EC98-4BDA-BE20-753FC06544E5</message>\n    </error>\n</errors>"
+						},
+						{
+							"id": "d7bbefd8-7686-4d90-b82e-b219e93ab2e4",
 							"name": "Not Found",
 							"originalRequest": {
 								"url": {
@@ -468,18 +907,23 @@
 									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_prod\"));",
 									"}",
 									"",
-									"var date = new Date();",
-									"var day = date.getDate();",
+									"today = new Date();",
+									"yesterday = new Date(today);",
+									"yesterday.setDate(today.getDate() - 0.15);",
+									"",
+									"lastMonth = new Date(today);",
+									"lastMonth.setDate(today.getDate() - 30);",
 									"",
 									"",
-									"postman.setGlobalVariable(\"today\", date.getDate() + \"/\" + date.getUTCMonth() + \"/\" + date.getFullYear());"
+									"postman.setGlobalVariable(\"finalDate\", yesterday.toISOString());",
+									"postman.setGlobalVariable(\"initialDate\", lastMonth.toISOString());"
 								]
 							}
 						}
 					],
 					"request": {
 						"url": {
-							"raw": "{{url_ws}}v2/transactions/?email={{email}}&token={{token}}&initialDate={{today}}",
+							"raw": "{{url_ws}}v2/transactions/?email={{email}}&token={{token}}&initialDate={{initialDate}}&finalDate={{finalDate}}",
 							"host": [
 								"{{url_ws}}v2"
 							],
@@ -502,7 +946,13 @@
 								},
 								{
 									"key": "initialDate",
-									"value": "{{today}}",
+									"value": "{{initialDate}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "finalDate",
+									"value": "{{finalDate}}",
 									"equals": true,
 									"description": ""
 								}
@@ -516,7 +966,7 @@
 					},
 					"response": [
 						{
-							"id": "8090b4ad-d0ff-4307-a615-aa08caf13302",
+							"id": "36d93d3f-b579-49cd-b8c7-9652da596e3e",
 							"name": "200",
 							"originalRequest": {
 								"url": {
@@ -613,7 +1063,7 @@
 							"body": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"yes\"?><transaction><date>2017-06-21T17:26:49.000-03:00</date><code>AC9AE719-EC98-4BDA-BE20-753FC06544E5</code><reference>201706</reference><type>1</type><status>7</status><cancellationSource>EXTERNAL</cancellationSource><lastEventDate>2017-06-21T17:26:55.000-03:00</lastEventDate><paymentMethod><type>1</type><code>101</code></paymentMethod><grossAmount>2.00</grossAmount><discountAmount>0.00</discountAmount><creditorFees><installmentFeeAmount>0.00</installmentFeeAmount><intermediationRateAmount>0.40</intermediationRateAmount><intermediationFeeAmount>0.10</intermediationFeeAmount></creditorFees><netAmount>1.50</netAmount><extraAmount>0.00</extraAmount><installmentCount>1</installmentCount><itemCount>1</itemCount><items><item><id>0001</id><description>Notebook Prata</description><quantity>1</quantity><amount>2.00</amount></item></items><sender><name>Jose Comprador</name><email>sena@senartes.com.br</email><phone><areaCode>11</areaCode><number>56713293</number></phone></sender><primaryReceiver><publicKey>PUB3709AE5B09E14FC99C5CF2E31639D681</publicKey></primaryReceiver></transaction>"
 						},
 						{
-							"id": "96a16755-ceb9-4e94-bbff-ccb8e4b24acb",
+							"id": "aac34bda-f522-416c-891e-b3f20eb62b08",
 							"name": "Unauthorized",
 							"originalRequest": {
 								"url": {
@@ -704,7 +1154,7 @@
 							"body": "Unauthorized"
 						},
 						{
-							"id": "1ca446b0-d468-4169-8cdf-d8b879e39ee9",
+							"id": "240ea237-8164-4290-ae1e-768ab8c4eb02",
 							"name": "Error",
 							"originalRequest": {
 								"url": {
@@ -807,7 +1257,7 @@
 							"body": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"yes\"?>\n<errors>\n    <error>\n        <code>13003</code>\n        <message>invalid transactionCode value: 1AC9AE719-EC98-4BDA-BE20-753FC06544E5</message>\n    </error>\n</errors>"
 						},
 						{
-							"id": "43840de0-b9bd-47ba-9f54-a0b8d311e037",
+							"id": "7eb526fe-af48-4cb6-8d87-0e7c22ee3de4",
 							"name": "Not Found",
 							"originalRequest": {
 								"url": {
@@ -969,7 +1419,7 @@
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1",
+								"value": "application/vnd.pagseguro.com.br.v3+xml;charset=ISO-8859-1",
 								"description": ""
 							},
 							{
@@ -986,7 +1436,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"yes\"?>\r\n<preApprovalRequest>\r\n<preApproval>\r\n<name>Plano - 1sdofiusdf089290818432uioijjifd09230938904</name> //Nome do plano\r\n  <reference>PATYREF</reference>\r\n<!--<charge>AUTO</charge>-->\r\n<charge>MANUAL</charge>\r\n<period>YEARLY</period>\r\n!<!--<period>MONTHLY</period>-->\r\n<cancelURL>http://sitedocliente.com</cancelURL> //URL de cancelamento\r\n<amountPerPayment>200.00</amountPerPayment> //Valor máximo cobrado por período\r\n<maxAmountPerPeriod>90000.00</maxAmountPerPeriod>\r\n<membershipFee>150.00</membershipFee> //Taxa de adesão\r\n<trialPeriodDuration>28</trialPeriodDuration> //Tempo de teste\r\n </preApproval>\r\n <maxUses>500</maxUses> //Quantidade máxima de uso do plano\r\n </preApprovalRequest>\r\n <!--\r\n <preApprovalRequest> \r\n<reference>Plano Padrao</reference> \r\n<preApproval> \r\n<name>Plano para todos os clientes</name> \r\n<charge>MANUAL</charge> \r\n<period>MONTHLY</period> \r\n</preApproval> \r\n</preApprovalRequest>\r\n-->"
+							"raw": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"yes\"?>\r\n<preApprovalRequest>\r\n<preApproval>\r\n<name>Plano - 1sdofiusdf089290818432uioijjifd09230938904</name> //Nome do plano\r\n  <reference>PATYREF</reference>\r\n<charge>AUTO</charge>\r\n<!--<charge>MANUAL</charge>-->\r\n<period>YEARLY</period>\r\n<!--<period>MONTHLY</period>\r\n<maxAmountPerPeriod>90000.00</maxAmountPerPeriod>\r\n-->\r\n<amountPerPayment>200.00</amountPerPayment> //Valor máximo cobrado por período\r\n<cancelURL>http://sitedocliente.com</cancelURL> //URL de cancelamento\r\n<membershipFee>150.00</membershipFee> //Taxa de adesão\r\n<trialPeriodDuration>28</trialPeriodDuration> //Tempo de teste\r\n </preApproval>\r\n <maxUses>500</maxUses> //Quantidade máxima de uso do plano\r\n </preApprovalRequest>\r\n <!--\r\n <preApprovalRequest> \r\n<reference>Plano Padrao</reference> \r\n<preApproval> \r\n<name>Plano para todos os clientes</name> \r\n<charge>MANUAL</charge> \r\n<period>MONTHLY</period> \r\n</preApproval> \r\n</preApprovalRequest>\r\n-->"
 						},
 						"description": ""
 					},
@@ -1069,7 +1519,7 @@
 					},
 					"response": [
 						{
-							"id": "6c14f025-233b-4233-8684-7a36bcf97d78",
+							"id": "46cfdc07-d761-4bc2-bec7-dd07124bdb67",
 							"name": "Invalid CPF",
 							"originalRequest": {
 								"url": {
@@ -1160,7 +1610,7 @@
 							"body": "{\"error\":true,\"errors\":{\"61011\":\"cpf is invalid: 40697586877\"}}"
 						},
 						{
-							"id": "c2ea64dc-f686-408c-8d3a-515d2f9c8d90",
+							"id": "b58801a5-b90f-48c8-8780-358351609321",
 							"name": "Unauthorized",
 							"originalRequest": {
 								"url": {
@@ -1320,7 +1770,7 @@
 					},
 					"response": [
 						{
-							"id": "0fd7cc6a-c69d-4fc0-99a5-0c61e4ba4b31",
+							"id": "555e6ddb-7091-4fbf-b532-a9ad9a19c4af",
 							"name": "Invalid CPF",
 							"originalRequest": {
 								"url": {
@@ -1411,7 +1861,7 @@
 							"body": "{\"error\":true,\"errors\":{\"61011\":\"cpf is invalid: 40697586877\"}}"
 						},
 						{
-							"id": "114c6d46-1ae5-4589-9ec7-c43db0229ff6",
+							"id": "36f69fd3-e9e5-4d99-8f7c-445e2bca9d8c",
 							"name": "Unauthorized",
 							"originalRequest": {
 								"url": {
@@ -1563,6 +2013,105 @@
 					"response": []
 				},
 				{
+					"name": "consultar os dados de recorrências por intervalo de datas",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var env = postman.getEnvironmentVariable(\"env\");",
+									"",
+									"if(env == 'sandbox') {",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_sand\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_sand\"));",
+									"    ",
+									"}else{",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_prod\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_prod\"));",
+									"}",
+									"",
+									"today = new Date();",
+									"yesterday = new Date(today);",
+									"yesterday.setDate(today.getDate() - 1);",
+									"",
+									"lastMonth = new Date(today);",
+									"lastMonth.setDate(today.getDate() - 365);",
+									"",
+									"",
+									"postman.setGlobalVariable(\"finalDate\", yesterday.toISOString());",
+									"postman.setGlobalVariable(\"initialDate\", lastMonth.toISOString());"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url_ws}}pre-approvals/?email={{email}}&token={{token}}&initialDate={{initialDate}}&finalDate={{finalDate}}&page=1&maxPageResults=100&",
+							"host": [
+								"{{url_ws}}pre-approvals"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "initialDate",
+									"value": "{{initialDate}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "finalDate",
+									"value": "{{finalDate}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "maxPageResults",
+									"value": "100",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "",
+									"value": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
 					"name": "Desconto na proxima",
 					"event": [
 						{
@@ -1586,12 +2135,12 @@
 					],
 					"request": {
 						"url": {
-							"raw": "{{url_ws}}pre-approvals/1E8951D30707256004A8EFBFFEFC6B6E/discount?email={{email}}&token={{token}}",
+							"raw": "{{url_ws}}pre-approvals/{{directPreApprovalCode}}/discount?email={{email}}&token={{token}}",
 							"host": [
 								"{{url_ws}}pre-approvals"
 							],
 							"path": [
-								"1E8951D30707256004A8EFBFFEFC6B6E",
+								"{{directPreApprovalCode}}",
 								"discount"
 							],
 							"query": [
@@ -1742,12 +2291,12 @@
 					],
 					"request": {
 						"url": {
-							"raw": "{{url_ws}}pre-approvals/5607C70902022F600473BF8B98F997A0/payment-orders?email={{email}}&token={{token}}",
+							"raw": "{{url_ws}}pre-approvals/{{directPreApprovalCode}}/payment-orders?email={{email}}&token={{token}}",
 							"host": [
 								"{{url_ws}}pre-approvals"
 							],
 							"path": [
-								"5607C70902022F600473BF8B98F997A0",
+								"{{directPreApprovalCode}}",
 								"payment-orders"
 							],
 							"query": [
@@ -1776,6 +2325,87 @@
 							{
 								"key": "Accept",
 								"value": "application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1",
+								"description": ""
+							},
+							{
+								"key": "",
+								"value": "",
+								"description": "",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"type\": \"CREDITCARD\",\r\n  \"sender\": {\r\n    \"ip\": \"1.1.1.1\",\r\n    \"hash\": \"hash\"\r\n  },\r\n  \"creditCard\": {\r\n    \"token\": \"e33fb289ea274abcac4426d75d92a3c8\",\r\n    \"holder\": {\r\n      \"name\": \"JOSÉ mUDADO\",\r\n      \"birthDate\": \"20/12/1990\",\r\n      \"documents\": [\r\n        {\r\n          \"type\": \"CPF\",\r\n          \"value\": \"99999999999\"\r\n        }\r\n      ],\r\n      \"phone\": {\r\n        \"areaCode\": \"99\",\r\n        \"number\": \"99999999\"\r\n      },\r\n      \"billingAddress\": {\r\n        \"street\": \"Av. PagSeguro\",\r\n        \"number\": \"9999\",\r\n        \"complement\": \"99o andar\",\r\n        \"district\": \"Jardim Internet\",\r\n        \"city\": \"Cidade Exemplo\",\r\n        \"state\": \"SP\",\r\n        \"country\": \"BRA\",\r\n        \"postalCode\": \"99999999\"\r\n      }\r\n    }\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Notificação",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var env = postman.getEnvironmentVariable(\"env\");",
+									"",
+									"if(env == 'sandbox') {",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_sand\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_sand\"));",
+									"    ",
+									"}else{",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_prod\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_prod\"));",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url_ws}}pre-approvals/notifications/97796EFBB156B15623D004545FBBAEEA18A2?email={{email}}&token={{token}}",
+							"host": [
+								"{{url_ws}}pre-approvals"
+							],
+							"path": [
+								"notifications",
+								"97796EFBB156B15623D004545FBBAEEA18A2"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/vnd.pagseguro.com.br.v3+xml;charset=ISO-8859-1",
 								"description": ""
 							},
 							{
@@ -2431,7 +3061,680 @@
 					},
 					"response": [
 						{
-							"id": "f8212777-3c7b-4732-b1c8-4656814a7b2e",
+							"id": "3c82689a-057c-4170-a20a-a578b981c284",
+							"name": "Valid request",
+							"originalRequest": {
+								"url": "{{url_ws}}v2/checkout",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "{{email}}",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "currency",
+											"value": "BRL",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "itemId1",
+											"value": "0001",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "itemDescription1",
+											"value": "Notebook Prata",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "itemAmount1",
+											"value": "24.00",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "itemQuantity1",
+											"value": "1",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "itemWeight1",
+											"value": "1000",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "itemId2",
+											"value": "0002",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "itemDescription2",
+											"value": "Notebook Rosa",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "itemAmount2",
+											"value": "20.00",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "itemQuantity2",
+											"value": "2",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "itemWeight2",
+											"value": "750",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "reference",
+											"value": "REF1234",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "senderName",
+											"value": "Jose Comprador",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "senderAreaCode",
+											"value": "11",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "senderPhone",
+											"value": "56713293",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "senderCPF",
+											"value": "38440987803",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "senderBornDate",
+											"value": "12/03/1990",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "senderEmail",
+											"value": "sena@sandbox.pagseguro.com.br",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "shippingType",
+											"value": "1",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "shippingAddressStreet",
+											"value": "Av. Brig. Faria Lima",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "shippingAddressNumber",
+											"value": "1384",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "shippingAddressComplement",
+											"value": "2o andar",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "shippingAddressDistrict",
+											"value": "Jardim Paulistano",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "shippingAddressPostalCode",
+											"value": "01452002",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "shippingAddressCity",
+											"value": "Sao Paulo",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "shippingAddressState",
+											"value": "SP",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "shippingAddressCountry",
+											"value": "BRA",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "extraAmount",
+											"value": "-0.02",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "redirectURL",
+											"value": "http://www.sounoob.com.br/paginaDeAgracedimento",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "notificationURL",
+											"value": "https://iocode.com.br/log/?Tue, 13 Jun 2017 14:15:10 -0300",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "maxUses",
+											"value": "1",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "maxAge",
+											"value": "3000",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "shippingCost",
+											"value": "0.00",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "paymentMethodGroup1",
+											"value": "CREDIT_CARD",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "paymentMethodConfigKey1_1",
+											"value": "MAX_INSTALLMENTS_NO_INTEREST",
+											"type": "text",
+											"description": "",
+											"disabled": true
+										},
+										{
+											"key": "paymentMethodConfigValue1_1",
+											"value": "6",
+											"type": "text",
+											"description": "",
+											"disabled": true
+										},
+										{
+											"key": "paymentMethodConfigKey1_1",
+											"value": "MAX_INSTALLMENTS_LIMIT",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "paymentMethodConfigValue1_1",
+											"value": "2",
+											"description": "",
+											"type": "text"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "xml",
+							"_postman_previewtype": "text",
+							"header": [
+								{
+									"name": "Access-Control-Allow-Headers",
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, origin, accept",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"name": "Access-Control-Allow-Methods",
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, OPTIONS",
+									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+								},
+								{
+									"name": "Access-Control-Allow-Origin",
+									"key": "Access-Control-Allow-Origin",
+									"value": "https://dev.pagseguro.uol.com.br",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"name": "Cache-Control",
+									"key": "Cache-Control",
+									"value": "max-age=180",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"name": "Connection",
+									"key": "Connection",
+									"value": "close",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"name": "Content-Length",
+									"key": "Content-Length",
+									"value": "168",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"name": "Content-Type",
+									"key": "Content-Type",
+									"value": "application/xml;charset=ISO-8859-1",
+									"description": "The mime type of this content"
+								},
+								{
+									"name": "Date",
+									"key": "Date",
+									"value": "Mon, 26 Jun 2017 14:48:56 GMT",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"name": "Expires",
+									"key": "Expires",
+									"value": "Mon, 26 Jun 2017 14:51:49 GMT",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"name": "Server",
+									"key": "Server",
+									"value": "Apache-Coyote/1.1",
+									"description": "A name for the server"
+								},
+								{
+									"name": "Vary",
+									"key": "Vary",
+									"value": "User-Agent",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								}
+							],
+							"cookie": [],
+							"responseTime": 7283,
+							"body": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"yes\"?><checkout><code>7E095D46B5B5C9A114F09FAABD100E90</code><date>2017-06-26T11:48:56.000-03:00</date></checkout>"
+						}
+					]
+				},
+				{
+					"name": "Checkout - Modelo de aplicações",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"if(responseCode.code === 200) {",
+									"    var jsonObject = xml2Json(responseBody)",
+									"    ",
+									"    tests[\"Received success response\"] = !jsonObject.errors",
+									"    ",
+									"    if(jsonObject.errors) {",
+									"        console.log(jsonObject.errors)",
+									"    }else{",
+									"        tests[\"Received a checkout code\"] = jsonObject.checkout.code",
+									"        tests[\"This checkout code should be valid\"] = jsonObject.checkout.code.length == 32",
+									"        ",
+									"        console.log(postman.getGlobalVariable('url_main') + 'v2/checkout/payment.html?code=' + jsonObject.checkout.code)",
+									"        ",
+									"        //postman.setEnvironmentVariable(\"transaction_code\", jsonObject.checkout.code);",
+									"        ",
+									"    }",
+									"}",
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var env = postman.getEnvironmentVariable(\"env\");",
+									"",
+									"if(env == 'sandbox') {",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_sand\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_sand\"));",
+									"    ",
+									"}else{",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_prod\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_prod\"));",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url_ws}}v2/checkout?&appId={{appId}}&appKey={{appKey}}&authorizationCode=20534BC8B1AA4B7AA4DAE826D57A7F9D",
+							"host": [
+								"{{url_ws}}v2"
+							],
+							"path": [
+								"checkout"
+							],
+							"query": [
+								{
+									"key": "appId",
+									"value": "{{appId}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "appKey",
+									"value": "{{appKey}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "authorizationCode",
+									"value": "20534BC8B1AA4B7AA4DAE826D57A7F9D",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "",
+									"value": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "currency",
+									"value": "BRL",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemId1",
+									"value": "0001",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemDescription1",
+									"value": "Notebook Prata",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemAmount1",
+									"value": "9918.98",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemQuantity1",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemWeight1",
+									"value": "1000",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemId2",
+									"value": "0002",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemDescription2",
+									"value": "Notebook Rosa",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemAmount2",
+									"value": "0.01",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemQuantity2",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemWeight2",
+									"value": "750",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "reference",
+									"value": "REF1234",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderName",
+									"value": "Jose Comprador",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderAreaCode",
+									"value": "11",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderPhone",
+									"value": "56713293",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderCPF",
+									"value": "38440987803",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderBornDate",
+									"value": "12/03/1990",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderEmail",
+									"value": "sena@sandbox.pagseguro.com.br",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "shippingType",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "shippingAddressStreet",
+									"value": "Av. Brig. Faria Lima",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "shippingAddressNumber",
+									"value": "1384",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "shippingAddressComplement",
+									"value": "2o andar",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "shippingAddressDistrict",
+									"value": "Jardim Paulistano",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "shippingAddressPostalCode",
+									"value": "01452002",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "shippingAddressCity",
+									"value": "Sao Paulo",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "shippingAddressState",
+									"value": "SP",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "shippingAddressCountry",
+									"value": "BRA",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "extraAmount",
+									"value": "-0.01",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "redirectURL",
+									"value": "http://www.sounoob.com.br/paginaDeAgracedimento",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "notificationURL",
+									"value": "https://iocode.com.br/log/?Tue, 13 Jun 2017 14:15:10 -0300",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "maxUses",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "maxAge",
+									"value": "3000",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "shippingCost",
+									"value": "0.00",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "paymentMethodGroup1",
+									"value": "CREDIT_CARD",
+									"type": "text",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "paymentMethodConfigKey1_1",
+									"value": "MAX_INSTALLMENTS_NO_INTEREST",
+									"type": "text",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "paymentMethodConfigValue1_1",
+									"value": "6",
+									"type": "text",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "paymentMethodConfigKey1_1",
+									"value": "MAX_INSTALLMENTS_LIMIT",
+									"type": "text",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "paymentMethodConfigValue1_1",
+									"value": "2",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": [
+						{
+							"id": "a63acdca-a257-471b-8465-67d6482913bd",
 							"name": "Valid request",
 							"originalRequest": {
 								"url": "{{url_ws}}v2/checkout",
@@ -2783,6 +4086,241 @@
 									"    var jsonObject = xml2Json(responseBody)",
 									"    ",
 									"    tests[\"Received success response\"] = !jsonObject.errors",
+									"    if(jsonObject.errors) {",
+									"        console.log(jsonObject.errors)",
+									"    }else{",
+									"        postman.setEnvironmentVariable(\"transaction_code\", jsonObject.transaction.code);",
+									"    }",
+									"}",
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var env = postman.getEnvironmentVariable(\"env\");",
+									"",
+									"if(env == 'sandbox') {",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_sand\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_sand\"));",
+									"    ",
+									"    postman.setGlobalVariable(\"sender_hash\", postman.getGlobalVariable(\"sender_hash_sand\"));",
+									"    ",
+									"}else{",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_prod\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_prod\"));",
+									"    ",
+									"    postman.setGlobalVariable(\"sender_hash\", postman.getGlobalVariable(\"sender_hash_prod\"));",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url_ws}}v2/transactions/?email={{email}}&token={{token}}",
+							"host": [
+								"{{url_ws}}v2"
+							],
+							"path": [
+								"transactions",
+								""
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded;charset=UTF-8",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "paymentMode",
+									"value": "default",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "paymentMethod",
+									"value": "boleto",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "currency",
+									"value": "BRL",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "receiverEmail",
+									"value": "{{email}}",
+									"type": "text",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "itemId1",
+									"value": "0001",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemDescription1",
+									"value": "Notebook Prata ação",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemAmount1",
+									"value": "998.98",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemQuantity1",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemWeight1",
+									"value": "1000",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemId2",
+									"value": "0002",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemDescription2",
+									"value": "Notebook Rosa",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemAmount2",
+									"value": "0.01",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemQuantity2",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "itemWeight2",
+									"value": "750",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "reference",
+									"value": "REF1234",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderName",
+									"value": "Jose Comprador ação",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderAreaCode",
+									"value": "11",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderPhone",
+									"value": "56713293",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderCPF",
+									"value": "38440987803",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "extraAmount",
+									"value": "-0.01",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "shippingAddressRequired",
+									"value": "false",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderEmail",
+									"value": "meu@sandbox.pagseguro.com.br",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "senderHash",
+									"value": "{{sender_hash}}",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "notificationURL",
+									"value": "https://requestb.in/1drm2wk1",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout trans - cartão",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"if(responseCode.code === 200) {",
+									"    var jsonObject = xml2Json(responseBody)",
+									"    ",
+									"    tests[\"Received success response\"] = !jsonObject.errors",
 									"    /*",
 									"    if(jsonObject.errors) {",
 									"        console.log(jsonObject.errors)",
@@ -2810,9 +4348,13 @@
 									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_sand\"));",
 									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_sand\"));",
 									"    ",
+									"    postman.setGlobalVariable(\"sender_hash\", postman.getGlobalVariable(\"sender_hash_sand\"));",
+									"    ",
 									"}else{",
 									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_prod\"));",
 									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_prod\"));",
+									"    ",
+									"    postman.setGlobalVariable(\"sender_hash\", postman.getGlobalVariable(\"sender_hash_prod\"));",
 									"}"
 								]
 							}
@@ -2851,7 +4393,7 @@
 								},
 								{
 									"key": "paymentMethod",
-									"value": "boleto",
+									"value": "creditCard",
 									"type": "text",
 									"description": ""
 								},
@@ -2977,10 +4519,99 @@
 								},
 								{
 									"key": "senderHash",
-									"value": "763d5054abbc9922b9444bc1451cfdddf11ab4eb9f1e551a4ed29995cafe14e5",
+									"value": "{{sender_hash}}",
 									"type": "text",
-									"description": "",
-									"disabled": true
+									"description": ""
+								},
+								{
+									"key": "creditCardToken",
+									"value": "{{creditCardToken}}",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "billingAddressStreet",
+									"value": "Av. Brig. Faria Lima",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "billingAddressNumber",
+									"value": "1384",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "billingAddressComplement",
+									"value": "2o andar",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "billingAddressDistrict",
+									"value": "Jardim Paulistano",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "billingAddressPostalCode",
+									"value": "01452002",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "billingAddressCity",
+									"value": "Sao Paulo",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "billingAddressState",
+									"value": "SP",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "billingAddressCountry",
+									"value": "BRA",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "creditCardHolderAreaCode",
+									"value": "11",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "creditCardHolderPhone",
+									"value": "56713293",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "creditCardHolderName",
+									"value": "Flavio Sena dos santos",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "creditCardHolderCPF",
+									"value": "38440987803",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "installmentQuantity",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "installmentValue",
+									"value": "998.98",
+									"type": "text",
+									"description": ""
 								}
 							]
 						},
@@ -2989,8 +4620,34 @@
 					"response": []
 				},
 				{
-					"name": "Sessão",
+					"name": "Sessão v2",
 					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"if(responseCode.code === 200) {",
+									"    var jsonObject = xml2Json(responseBody)",
+									"    ",
+									"    tests[\"Received success response\"] = !jsonObject.errors",
+									"    ",
+									"    if(jsonObject.errors) {",
+									"        console.log(jsonObject.errors)",
+									"    }else{",
+									"        tests[\"Received a session id\"] = jsonObject.session.id",
+									"        tests[\"This checkout code should be valid\"] = jsonObject.session.id.length == 32",
+									"        ",
+									"        postman.setGlobalVariable(\"session_id\", jsonObject.session.id);",
+									"        ",
+									"    }",
+									"}",
+									""
+								]
+							}
+						},
 						{
 							"listen": "prerequest",
 							"script": {
@@ -3036,24 +4693,90 @@
 							"variable": []
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
+							"mode": "urlencoded",
+							"urlencoded": [
 								{
 									"key": "email",
 									"value": "{{email}}",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"description": ""
 								},
 								{
 									"key": "token",
 									"value": "{{token}}",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"description": ""
 								}
 							]
 						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Parcelamento",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var env = postman.getEnvironmentVariable(\"env\");",
+									"",
+									"if(env == 'sandbox') {",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_sand\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_sand\"));",
+									"    ",
+									"}else{",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_prod\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_prod\"));",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url_ws}}v2/installments?email={{email}}&token={{token}}&amount=100.00",
+							"host": [
+								"{{url_ws}}v2"
+							],
+							"path": [
+								"installments"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "amount",
+									"value": "100.00",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -3276,6 +4999,85 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "Gerar boleto",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var env = postman.getEnvironmentVariable(\"env\");",
+									"",
+									"if(env == 'sandbox') {",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_sand\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_sand\"));",
+									"    ",
+									"}else{",
+									"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_prod\"));",
+									"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_prod\"));",
+									"}",
+									"",
+									"today = new Date();",
+									"yesterday = new Date(today);",
+									"yesterday.setDate(today.getDate() - 1);",
+									"",
+									"lastMonth = new Date(today);",
+									"lastMonth.setDate(today.getDate() - 365);",
+									"",
+									"",
+									"postman.setGlobalVariable(\"finalDate\", yesterday.toISOString());",
+									"postman.setGlobalVariable(\"initialDate\", lastMonth.toISOString());"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url_ws}}recurring-payment/boletos?email={{email}}&token={{token}}",
+							"host": [
+								"{{url_ws}}recurring-payment"
+							],
+							"path": [
+								"boletos"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json;charset=ISO-8859-1",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json;charset=ISO-8859-1",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n   \"periodicity\":\"monthly\",\r\n   \"reference\":\"Pedido\",\r\n   \"firstDueDate\":\"2017-10-29\",\r\n   \"numberOfPayments\":1,\r\n   \"amount\":\"5.1\",\r\n   \"description\":\"Assinatura de sorvete\",\r\n   \"customer\":{  \r\n      \"document\":{  \r\n         \"type\":\"CPF\",\r\n         \"value\":\"01234567890\"\r\n      },\r\n      \"name\":\"Noob Master\",\r\n      \"email\":\"conatoontato.com.br\",\r\n      \"phone\":{  \r\n         \"areaCode\":\"11\",\r\n         \"number\":\"89015154\"\r\n      }\r\n   }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -3322,6 +5124,136 @@
 						}
 					]
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Cancelamento de Transações",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var env = postman.getEnvironmentVariable(\"env\");",
+							"",
+							"if(env == 'sandbox') {",
+							"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_sand\"));",
+							"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_sand\"));",
+							"    ",
+							"}else{",
+							"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_prod\"));",
+							"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_prod\"));",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "{{url_ws}}v2/transactions/cancels/?email={{email}}&token={{token}}&transactionCode={{transaction_code}}",
+					"host": [
+						"{{url_ws}}v2"
+					],
+					"path": [
+						"transactions",
+						"cancels",
+						""
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "transactionCode",
+							"value": "{{transaction_code}}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Cancelamento de Transações - Modelo Aplicação",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var env = postman.getEnvironmentVariable(\"env\");",
+							"",
+							"if(env == 'sandbox') {",
+							"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_sand\"));",
+							"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_sand\"));",
+							"    ",
+							"}else{",
+							"    postman.setGlobalVariable(\"url_main\", postman.getGlobalVariable(\"url_main_prod\"));",
+							"    postman.setGlobalVariable(\"url_ws\", postman.getGlobalVariable(\"url_ws_prod\"));",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "{{url_ws}}v2/transactions/cancels/?transactionCode=8B6F1137-6CA2-45A0-B3C1-6576D5B29A60&appId={{appId}}&appKey={{appKey}}&authorizationCode=20534BC8B1AA4B7AA4DAE826D57A7F9D",
+					"host": [
+						"{{url_ws}}v2"
+					],
+					"path": [
+						"transactions",
+						"cancels",
+						""
+					],
+					"query": [
+						{
+							"key": "transactionCode",
+							"value": "8B6F1137-6CA2-45A0-B3C1-6576D5B29A60",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "appId",
+							"value": "{{appId}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "appKey",
+							"value": "{{appKey}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "authorizationCode",
+							"value": "20534BC8B1AA4B7AA4DAE826D57A7F9D",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
 				"description": ""
 			},
 			"response": []
